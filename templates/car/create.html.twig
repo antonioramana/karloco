@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+<style>
+    
+</style>
+
+<div class="">
+    {{form_start(formCar)}}
+    <div class="">
+        {{form_row(formCar.image,{
+            "attr":{
+                "placeholder":"entrez l'image..",
+                "type":"number",
+            }
+        })}}
+    </div>
+    <div class="">
+        {{form_row(formCar.mark,{
+            "attr":{
+                "placeholder":"entrez la marque..",
+                "type":"date",
+            }
+        })}}
+    </div>
+    <div class="">
+        {{form_row(formCar.color,{
+            "attr":{
+                "placeholder":"entrez la couleur..",
+            }
+        })}}
+    </div>
+    <div class="">
+        {{form_row(formCar.nbPlace,{
+            "attr":{
+                "placeholde":"entrez le nombre de place..",
+                "type":"number",
+            }
+        })}}
+    </div>
+    <div class="">
+        {{form_row(formCar.dailyTariff,{
+            "attr":{
+                "placeholder":"entrez la tarif par jour..",
+                "type":"number",
+            }
+        })}}
+    </div>
+    <div class="">
+        {{form_row(formCar.disponibility,{
+            "attr":{
+                "placeholder":"oui ou non..",
+            }
+        })}}
+    </div>
+     <button type="submit">Enregistrer</button>
+     {{form_end(formCar)}}
+</>
+{% endblock %}

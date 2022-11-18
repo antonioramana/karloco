@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+<style>
+   
+</style>
+
+<div class="">
+    <a href="{{ path("car-create",{"user":userId})}}">Ajouter voiture</a>
+     {% for car in cars %}
+        {{car.image}}
+        {{car.mark}}
+        {{car.color}}
+        {{nbPlace}}
+        {{car.dailyTariff}}
+        <a href="">favoritelogo</a>
+        <a href="{{ path("car-remove",{"id":car.id})}}}">editogo</a>
+        <a href="{{ path("car-edit",{"id":car.id})}}">suplogo</a>
+
+    {% endfor %}
+</div>
+{% endblock %}

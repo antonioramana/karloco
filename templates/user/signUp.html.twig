@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{title}}{% endblock %}
+
+{% block body %}
+<style>
+  
+</style>
+
+<div class="">
+    {{form_start(formUser)}}
+    <div class="">
+        {{form_row(formUser.email)}}
+    </div>
+     <div class="">
+        {{form_row(formUser.userName)}}
+    </div>
+     <div class="">
+        {{form_row(formUser.firstName)}}
+    </div>
+     <div class="">
+        {{form_row(formUser.userGender)}}
+    </div>
+     <div class="">
+        {{form_row(formUser.userPhone)}}
+    </div>
+     <div class="">
+        {{form_row(formUser.userCity)}}
+    </div> <div class="">
+        {{form_row(formUser.userProvince)}}
+    </div>
+     <div class="">
+        {{form_row(formUser.userCategory)}}
+    </div>
+     <div class="">
+        {{form_row(formUser.password)}}
+    </div>
+    <div class="">
+        {{form_row(formUser.confirm_password)}}
+    </div>
+   
+     <button type="submit">SubmitForm</button>
+    {{form_end(formUser)}}
+
+</div>
+{% endblock %}

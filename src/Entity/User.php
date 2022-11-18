@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert; //compare 2 passwords
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -25,6 +26,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @var string The hashed password
+     * @Assert\Length(min="8",minMessage="Votre mot de passe est trop court,entrez plus des 7 caractères")
+     * @Assert\EqualTo(propertyPath="confirm_password",message="Vueillez tapez à nouveau")
      */
     #[ORM\Column]
     private ?string $password = null;
@@ -55,6 +58,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Reservation::class)]
     private Collection $reservations;
+    
+    /**
+     * @Assert\EqualTo(propertyPath="password",message="Vous avez tapé des mots de passe différents")
+     */
+    public $confirm_password;
 
     public function __construct()
     {
@@ -275,4 +283,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    /**
+     * @see UserInterface
+     */
+    public function getSalt(){}
 }

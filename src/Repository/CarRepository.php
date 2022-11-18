@@ -20,6 +20,16 @@ class CarRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Car::class);
     }
+    public function findLastCar($nb)
+    {
+        return $this->createQueryBuilder("c")
+        // ->andWhere("c.color = eeee")
+        ->orderBy("c.createdAt","DESC")
+        ->setMaxResults($nb)
+        ->getQuery()
+        ->getResult();
+
+    }
 
     public function save(Car $entity, bool $flush = false): void
     {
